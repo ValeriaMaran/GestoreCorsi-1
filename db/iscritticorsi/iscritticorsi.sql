@@ -11,21 +11,20 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dump della struttura del database iscritticorsi
-CREATE DATABASE IF NOT EXISTS `iscritticorsi` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `iscritticorsi`;
+CREATE DATABASE IF NOT EXISTS `iscritticorsi` /*!40100 DEFAULT CHARACTER SET utf8 */; USE `iscritticorsi`;
 
 
 -- Dump della struttura di tabella iscritticorsi.corso
 CREATE TABLE IF NOT EXISTS `corso` (
-  `codins` varchar(50) NOT NULL,
-  `crediti` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `pd` int(11) NOT NULL,
-  PRIMARY KEY (`codins`)
+ `codins` VARCHAR(50) NOT NULL,
+ `crediti` INT(11) NOT NULL,
+ `nome` VARCHAR(50) NOT NULL,
+ `pd` INT(11) NOT NULL, PRIMARY KEY (`codins`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dump dei dati della tabella iscritticorsi.corso: ~14 rows (circa)
-DELETE FROM `corso`;
+DELETE
+FROM `corso`;
 /*!40000 ALTER TABLE `corso` DISABLE KEYS */;
 INSERT INTO `corso` (`codins`, `crediti`, `nome`, `pd`) VALUES
 	('01KSUPG', 8, 'Gestione dell\'innovazione e sviluppo prodotto', 2),
@@ -47,16 +46,13 @@ INSERT INTO `corso` (`codins`, `crediti`, `nome`, `pd`) VALUES
 
 -- Dump della struttura di tabella iscritticorsi.iscrizione
 CREATE TABLE IF NOT EXISTS `iscrizione` (
-  `matricola` int(11) NOT NULL,
-  `codins` varchar(50) NOT NULL,
-  PRIMARY KEY (`matricola`,`codins`),
-  KEY `FK_iscrizione_corso` (`codins`),
-  CONSTRAINT `FK_iscrizione_studente` FOREIGN KEY (`matricola`) REFERENCES `studente` (`matricola`),
-  CONSTRAINT `FK_iscrizione_corso` FOREIGN KEY (`codins`) REFERENCES `corso` (`codins`)
+ `matricola` INT(11) NOT NULL,
+ `codins` VARCHAR(50) NOT NULL, PRIMARY KEY (`matricola`,`codins`), KEY `FK_iscrizione_corso` (`codins`), CONSTRAINT `FK_iscrizione_studente` FOREIGN KEY (`matricola`) REFERENCES `studente` (`matricola`), CONSTRAINT `FK_iscrizione_corso` FOREIGN KEY (`codins`) REFERENCES `corso` (`codins`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dump dei dati della tabella iscritticorsi.iscrizione: ~3.120 rows (circa)
-DELETE FROM `iscrizione`;
+DELETE
+FROM `iscrizione`;
 /*!40000 ALTER TABLE `iscrizione` DISABLE KEYS */;
 INSERT INTO `iscrizione` (`matricola`, `codins`) VALUES
 	(161245, '01KSUPG'),
@@ -3130,15 +3126,15 @@ INSERT INTO `iscrizione` (`matricola`, `codins`) VALUES
 
 -- Dump della struttura di tabella iscritticorsi.studente
 CREATE TABLE IF NOT EXISTS `studente` (
-  `matricola` int(11) NOT NULL,
-  `cognome` varchar(50) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `CDS` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`matricola`)
+ `matricola` INT(11) NOT NULL,
+ `cognome` VARCHAR(50) NOT NULL,
+ `nome` VARCHAR(50) NOT NULL,
+ `CDS` VARCHAR(50) DEFAULT NULL, PRIMARY KEY (`matricola`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dump dei dati della tabella iscritticorsi.studente: ~598 rows (circa)
-DELETE FROM `studente`;
+DELETE
+FROM `studente`;
 /*!40000 ALTER TABLE `studente` DISABLE KEYS */;
 INSERT INTO `studente` (`matricola`, `cognome`, `nome`, `CDS`) VALUES
 	(146101, 'VIGGIANO', 'CLAUDIO', 'CIN1T3'),
@@ -3804,3 +3800,4 @@ INSERT INTO `studente` (`matricola`, `cognome`, `nome`, `CDS`) VALUES
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+babsiscrizioneiscrizione
